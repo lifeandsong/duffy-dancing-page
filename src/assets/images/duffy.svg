@@ -1,0 +1,80 @@
+<svg width="200" height="240" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240">
+  <!-- 더피 곰 캐릭터 SVG - 케이팝 데몬 헌터스 스타일 -->
+
+  <!-- 왼쪽 귀 (더 큰 곰 귀) -->
+  <ellipse cx="65" cy="55" rx="22" ry="28" fill="#D2691E" stroke="#8B4513" stroke-width="3"/>
+  <ellipse cx="68" cy="58" rx="12" ry="16" fill="#DEB887"/>
+
+  <!-- 오른쪽 귀 (더 큰 곰 귀) -->
+  <ellipse cx="135" cy="55" rx="22" ry="28" fill="#D2691E" stroke="#8B4513" stroke-width="3"/>
+  <ellipse cx="132" cy="58" rx="12" ry="16" fill="#DEB887"/>
+
+  <!-- 머리 (더 큰 곰 머리) -->
+  <circle cx="100" cy="90" r="50" fill="#D2691E" stroke="#8B4513" stroke-width="3"/>
+
+  <!-- 얼굴 영역 -->
+  <ellipse cx="100" cy="100" rx="40" ry="35" fill="#F5DEB3"/>
+
+  <!-- 왼쪽 눈 (더 큰 곰 눈) -->
+  <ellipse cx="82" cy="85" rx="12" ry="15" fill="#000"/>
+  <ellipse cx="85" cy="80" rx="6" ry="8" fill="#fff"/>
+  <circle cx="87" cy="82" r="3" fill="#000"/>
+
+  <!-- 오른쪽 눈 (더 큰 곰 눈) -->
+  <ellipse cx="118" cy="85" rx="12" ry="15" fill="#000"/>
+  <ellipse cx="115" cy="80" rx="6" ry="8" fill="#fff"/>
+  <circle cx="113" cy="82" r="3" fill="#000"/>
+
+  <!-- 코 (더 큰 곰 코) -->
+  <ellipse cx="100" cy="105" rx="8" ry="6" fill="#000"/>
+  <ellipse cx="100" cy="103" rx="3" ry="2" fill="#fff"/>
+
+  <!-- 입 (곰스러운 미소) -->
+  <path d="M 85 120 Q 100 130 115 120" stroke="#000" stroke-width="3" fill="none"/>
+  <circle cx="90" cy="125" r="2" fill="#000"/>
+  <circle cx="110" cy="125" r="2" fill="#000"/>
+
+  <!-- 몸통 (더 통통한 곰 몸) -->
+  <ellipse cx="100" cy="170" rx="40" ry="35" fill="#D2691E" stroke="#8B4513" stroke-width="3"/>
+  <ellipse cx="100" cy="175" rx="30" ry="25" fill="#F5DEB3"/>
+
+  <!-- 왼쪽 팔 (곰 팔) -->
+  <ellipse cx="60" cy="160" rx="15" ry="25" fill="#D2691E" stroke="#8B4513" stroke-width="3" transform="rotate(-30 60 160)"/>
+  <circle cx="50" cy="175" r="12" fill="#F5DEB3" stroke="#8B4513" stroke-width="2"/>
+  <!-- 발가락 -->
+  <circle cx="45" cy="170" r="2" fill="#000"/>
+  <circle cx="48" cy="175" r="2" fill="#000"/>
+  <circle cx="45" cy="180" r="2" fill="#000"/>
+
+  <!-- 오른쪽 팔 (곰 팔) -->
+  <ellipse cx="140" cy="160" rx="15" ry="25" fill="#D2691E" stroke="#8B4513" stroke-width="3" transform="rotate(30 140 160)"/>
+  <circle cx="150" cy="175" r="12" fill="#F5DEB3" stroke="#8B4513" stroke-width="2"/>
+  <!-- 발가락 -->
+  <circle cx="155" cy="170" r="2" fill="#000"/>
+  <circle cx="152" cy="175" r="2" fill="#000"/>
+  <circle cx="155" cy="180" r="2" fill="#000"/>
+
+  <!-- 왼쪽 다리 (곰 다리) -->
+  <ellipse cx="80" cy="205" rx="12" ry="20" fill="#D2691E" stroke="#8B4513" stroke-width="3"/>
+  <ellipse cx="80" cy="220" rx="15" ry="10" fill="#F5DEB3" stroke="#8B4513" stroke-width="2"/>
+  <!-- 발가락 -->
+  <circle cx="75" cy="215" r="2" fill="#000"/>
+  <circle cx="80" cy="218" r="2" fill="#000"/>
+  <circle cx="85" cy="215" r="2" fill="#000"/>
+
+  <!-- 오른쪽 다리 (곰 다리) -->
+  <ellipse cx="120" cy="205" rx="12" ry="20" fill="#D2691E" stroke="#8B4513" stroke-width="3"/>
+  <ellipse cx="120" cy="220" rx="15" ry="10" fill="#F5DEB3" stroke="#8B4513" stroke-width="2"/>
+  <!-- 발가락 -->
+  <circle cx="115" cy="215" r="2" fill="#000"/>
+  <circle cx="120" cy="218" r="2" fill="#000"/>
+  <circle cx="125" cy="215" r="2" fill="#000"/>
+
+  <!-- 귀여운 볼터치 -->
+  <circle cx="65" cy="100" r="8" fill="#FFB6C1" opacity="0.6"/>
+  <circle cx="135" cy="100" r="8" fill="#FFB6C1" opacity="0.6"/>
+
+  <!-- 배 무늬 (선택사항) -->
+  <ellipse cx="100" cy="175" rx="15" ry="20" fill="#F0E68C" opacity="0.3"/>
+
+</svg>

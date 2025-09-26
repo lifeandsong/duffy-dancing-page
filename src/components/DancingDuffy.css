@@ -1,0 +1,541 @@
+.dancing-duffy-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 400px;
+  padding: 2rem;
+}
+
+.duffy-character {
+  position: relative;
+  z-index: 2;
+}
+
+.duffy-character img {
+  width: 200px;
+  height: 240px;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+  transition: all 0.3s ease;
+}
+
+/* 춤추는 애니메이션 - 메인 댄스 (단순화) */
+.duffy-character.dancing img {
+  animation: duffy-dance 1.5s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+/* 통합된 춤 애니메이션 */
+@keyframes duffy-dance {
+  0% {
+    transform: translateY(0px) translateX(0px) rotate(0deg) scale(1);
+  }
+  12.5% {
+    transform: translateY(-15px) translateX(-10px) rotate(-5deg) scale(1.03);
+  }
+  25% {
+    transform: translateY(-10px) translateX(-15px) rotate(-3deg) scale(1.05);
+  }
+  37.5% {
+    transform: translateY(-20px) translateX(-5px) rotate(-8deg) scale(1.02);
+  }
+  50% {
+    transform: translateY(-5px) translateX(0px) rotate(0deg) scale(1.08);
+  }
+  62.5% {
+    transform: translateY(-18px) translateX(5px) rotate(8deg) scale(1.02);
+  }
+  75% {
+    transform: translateY(-12px) translateX(15px) rotate(3deg) scale(1.05);
+  }
+  87.5% {
+    transform: translateY(-16px) translateX(10px) rotate(5deg) scale(1.03);
+  }
+  100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg) scale(1);
+  }
+}
+
+/* 춤 바닥 */
+.dance-floor {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 20px;
+  background: radial-gradient(ellipse, rgba(255, 255, 255, 0.3), transparent);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.duffy-character.dancing .dance-floor {
+  animation: floor-pulse 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes floor-pulse {
+  0% {
+    transform: translateX(-50%) scaleX(1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateX(-50%) scaleX(1.2);
+    opacity: 0.6;
+  }
+}
+
+/* 컨트롤 버튼 */
+.controls {
+  margin-top: 3rem;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.dance-button {
+  font-size: 1.2rem;
+  padding: 15px 30px;
+  background: linear-gradient(45deg, #FF6B6B, #FF8E8E);
+  border: none;
+  border-radius: 25px;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+}
+
+.dance-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
+}
+
+.dance-button:active {
+  transform: translateY(-1px) scale(1.02);
+}
+
+.dance-button:focus {
+  outline: 3px solid #FFD700;
+  outline-offset: 2px;
+}
+
+/* 속도 제어 버튼들 */
+.speed-controls {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.speed-button {
+  font-size: 0.9rem;
+  padding: 8px 16px;
+  background: linear-gradient(45deg, #4ECDC4, #44A08D);
+  border: none;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(78, 205, 196, 0.3);
+}
+
+.speed-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(78, 205, 196, 0.5);
+}
+
+.speed-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.speed-button.active {
+  background: linear-gradient(45deg, #FFD700, #FFA500);
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
+  transform: scale(1.1);
+}
+
+.speed-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 2px 5px rgba(78, 205, 196, 0.2);
+}
+
+.speed-button:focus {
+  outline: 2px solid #FFD700;
+  outline-offset: 1px;
+}
+
+/* 음악 노트 애니메이션 */
+.music-notes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.note {
+  position: absolute;
+  font-size: 2rem;
+  color: #FFD700;
+  opacity: 0;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.dancing-duffy-container .dancing ~ .music-notes .note {
+  animation: float-notes 3s ease-in-out infinite;
+}
+
+.note:nth-child(1) {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.note:nth-child(2) {
+  top: 15%;
+  right: 15%;
+  animation-delay: 0.75s;
+}
+
+.note:nth-child(3) {
+  top: 30%;
+  left: 20%;
+  animation-delay: 1.5s;
+}
+
+.note:nth-child(4) {
+  top: 25%;
+  right: 25%;
+  animation-delay: 2.25s;
+}
+
+@keyframes float-notes {
+  0%, 100% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-20px) scale(1.2);
+  }
+}
+
+/* 속도별 애니메이션 설정 */
+.duffy-character.dancing.speed-slow img {
+  animation: duffy-dance 3s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+.duffy-character.dancing.speed-normal img {
+  animation: duffy-dance 1.5s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+.duffy-character.dancing.speed-fast img {
+  animation: duffy-dance 0.8s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+/* 속도별 바닥 애니메이션 */
+.duffy-character.dancing.speed-slow .dance-floor {
+  animation: floor-pulse 3s ease-in-out infinite alternate;
+}
+
+.duffy-character.dancing.speed-normal .dance-floor {
+  animation: floor-pulse 1.5s ease-in-out infinite alternate;
+}
+
+.duffy-character.dancing.speed-fast .dance-floor {
+  animation: floor-pulse 0.8s ease-in-out infinite alternate;
+}
+
+/* 춤 정보 텍스트 */
+.dance-info {
+  position: absolute;
+  bottom: -3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: #333;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  animation: fade-in 0.5s ease-in-out;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* 클릭 가능한 이미지 스타일 */
+.duffy-character img {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.duffy-character img:focus {
+  outline: 3px solid #FFD700;
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+/* 호버 효과 */
+.duffy-character:hover img {
+  transform: scale(1.1);
+}
+
+/* 반응형 디자인 - 태블릿 (768px ~ 1023px) */
+@media (max-width: 1023px) {
+  .dancing-duffy-container {
+    padding: 1.5rem;
+    min-height: 350px;
+  }
+
+  .duffy-character img {
+    width: 180px;
+    height: 180px;
+  }
+
+  .dance-floor {
+    width: 250px;
+  }
+
+  .controls {
+    margin-top: 2rem;
+  }
+
+  .dance-button {
+    font-size: 1.1rem;
+    padding: 14px 28px;
+  }
+
+  .note {
+    font-size: 1.8rem;
+  }
+}
+
+/* 반응형 디자인 - 모바일 (480px ~ 767px) */
+@media (max-width: 767px) {
+  .dancing-duffy-container {
+    padding: 1rem;
+    min-height: 300px;
+  }
+
+  .duffy-character img {
+    width: 150px;
+    height: 150px;
+  }
+
+  .dance-floor {
+    width: 200px;
+    height: 15px;
+  }
+
+  .controls {
+    margin-top: 1.5rem;
+  }
+
+  .dance-button {
+    font-size: 1rem;
+    padding: 12px 24px;
+  }
+
+  .note {
+    font-size: 1.5rem;
+  }
+
+  /* 애니메이션 강도 조절 (모바일 성능 고려) */
+  @keyframes dance-bounce {
+    0% {
+      transform: translateY(0px) scale(1);
+    }
+    100% {
+      transform: translateY(-15px) scale(1.03);
+    }
+  }
+
+  @keyframes dance-sway {
+    0%, 100% {
+      transform: translateX(0px) rotateZ(0deg);
+    }
+    25% {
+      transform: translateX(-10px) rotateZ(-3deg);
+    }
+    75% {
+      transform: translateX(10px) rotateZ(3deg);
+    }
+  }
+}
+
+/* 반응형 디자인 - 작은 모바일 (320px ~ 479px) */
+@media (max-width: 479px) {
+  .dancing-duffy-container {
+    padding: 0.5rem;
+    min-height: 280px;
+  }
+
+  .duffy-character img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .dance-floor {
+    width: 150px;
+    height: 12px;
+  }
+
+  .controls {
+    margin-top: 1rem;
+  }
+
+  .dance-button {
+    font-size: 0.9rem;
+    padding: 10px 20px;
+    border-radius: 20px;
+  }
+
+  .note {
+    font-size: 1.2rem;
+  }
+
+  /* 더 부드러운 애니메이션 (저사양 기기 고려) */
+  @keyframes dance-bounce {
+    0% {
+      transform: translateY(0px);
+    }
+    100% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes dance-sway {
+    0%, 100% {
+      transform: translateX(0px);
+    }
+    50% {
+      transform: translateX(-8px);
+    }
+  }
+}
+
+/* 가로 모드 최적화 */
+@media (orientation: landscape) and (max-height: 600px) {
+  .dancing-duffy-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    min-height: auto;
+    padding: 1rem;
+  }
+
+  .duffy-character img {
+    width: 140px;
+    height: 140px;
+  }
+
+  .controls {
+    margin-top: 0;
+    margin-left: 2rem;
+  }
+
+  .music-notes {
+    position: relative;
+    width: 200px;
+    height: 200px;
+  }
+
+  .note:nth-child(1),
+  .note:nth-child(3) {
+    left: 10px;
+  }
+
+  .note:nth-child(2),
+  .note:nth-child(4) {
+    right: 10px;
+  }
+}
+
+/* 터치 인터페이스 최적화 */
+@media (hover: none) and (pointer: coarse) {
+  .dance-button {
+    min-height: 48px;
+    min-width: 120px;
+    font-size: 1rem;
+  }
+
+  .dance-button:hover {
+    transform: none;
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+  }
+
+  .dance-button:active {
+    transform: scale(0.98);
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.6);
+  }
+
+  .duffy-character:hover img {
+    transform: none;
+  }
+}
+
+/* 고대비 모드 지원 */
+@media (prefers-contrast: high) {
+  .dance-button {
+    border: 2px solid #000;
+    color: #000;
+    background: #fff;
+  }
+
+  .note {
+    color: #000;
+    text-shadow: 1px 1px 2px #fff;
+  }
+}
+
+/* 애니메이션 감소 모드 지원 */
+@media (prefers-reduced-motion: reduce) {
+  .duffy-character.dancing img {
+    animation: none;
+  }
+
+  .duffy-character.dancing .dance-floor {
+    animation: none;
+  }
+
+  .dancing-duffy-container .dancing ~ .music-notes .note {
+    animation: none;
+    opacity: 0.5;
+  }
+
+  /* 대체 애니메이션 (미미한 효과만) */
+  .duffy-character.dancing img {
+    animation: gentle-pulse 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes gentle-pulse {
+    0% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
